@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet</title>
+    <style> 
+    body {
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        margin: 0; 
+        font-family: Arial, sans-serif;
+        background-color: #f4f7f9; 
+      }
+
+      .div_form {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 400px;
+      }
+      button[type="submit"] {
+            background-color: lightseagreen;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .file-input-wrapper {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        border-radius: 8px;
+        background-color: #ecf0f1;
+        border: 2px solid #ccc;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+
+      .file-input-wrapper input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+      }
+
+      .file-input-text {
+        font-size: 16px;
+        color: #7f8c8d;
+        font-weight: 500;
+        text-align: center;
+      }
+
+      .file-input-wrapper:hover {
+        border-color: lightseagreen;
+      }
+
+      .file-input-wrapper:active {
+        background-color: #dfe6e9;
+      }
+
+
+    </style>
+  </head>
+
+    <body>
+      <body>
+        <div class="div_form"> 
+          <h1>{{context.name}}</h1>
+          <p> Permet de dissimuler vos données sensibles </p>
+        <form action="upload" method="post" enctype=multipart/form-data> <!-- A compléter : envoyer vers le serveur  -->
+          <label>{{context.test}}</label>      
+
+
+          <div class="file-input-wrapper">
+            <input type="file" id="file" name="file" onchange="displayFileName()">
+            <span id="file-input-text" class="file-input-text">Choisissez un fichier</span>
+
+
+          </div>
+          <br>
+          <br>
+          
+          <button type="submit"> {{context.ok}} </button>
+          
+        </form>
+
+      </div>
+      <script>
+        function displayFileName() {
+          var fileInput = document.getElementById('file');
+          var fileName = fileInput.files[0] ? fileInput.files[0].name : '';
+  
+          var fileInputText = document.getElementById('file-input-text');
+          if (fileName) {
+            // Modifier le texte du span pour afficher le nom du fichier sélectionné
+            fileInputText.textContent = fileName;
+          } else {
+            // Si aucun fichier n'est sélectionné, afficher "Choisissez un fichier"
+            fileInputText.textContent = 'Choisissez un fichier';
+          }
+        }
+      </script>
+
+    
+       
+    </body>
+    </html>

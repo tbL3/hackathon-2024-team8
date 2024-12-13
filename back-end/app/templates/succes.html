@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet</title>
+
+    <style>
+        /* Style général */
+        body {
+          display: flex;
+          justify-content: center; 
+          align-items: center; 
+          height: 100vh; 
+          margin: 0; 
+          font-family: 'Arial', sans-serif;
+          background: linear-gradient(135deg, white, lightseagreen);
+          color: #2d3436;
+        }
+  
+        /* Conteneur du chargement */
+        .chargement {
+          text-align: center;
+          font-size: 24px;
+          color: white;
+          animation: fadeIn 1s ease-in-out infinite alternate;
+        }
+  
+        /* Conteneur principal */
+        .telechargement {
+          display: none; /* Caché par défaut */
+          background-color: white;
+          padding: 30px;
+          border-radius: 12px;
+          box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+          text-align: center;
+          width: 350px;
+          animation: fadeIn 1s ease-in-out;
+        }
+  
+        /* Icône de confirmation */
+        .telechargement::before {
+          content: "✔️";
+          font-size: 36px;
+          color: #2ecc71;
+          display: block;
+          margin-bottom: 15px;
+        }
+  
+        /* Animation pour les effets */
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+            transform: scale(0.9);
+          }
+          to {
+            opacity: 1;
+            transform: scale(1);
+          }
+        }
+      </style>
+    </head>
+
+    <body> 
+        <div class="chargement">Chargement...</div>
+
+        <div class="telechargement"> Le fichier a été envoyé avec succès </div>   
+        
+     </body>
+     <script>
+        // Simuler le chargement (3 secondes)
+        setTimeout(() => {
+          // Cacher l'écran de chargement
+          document.querySelector('.chargement').style.display = 'none';
+
+          // Afficher le message de confirmation
+          document.querySelector('.telechargement').style.display = 'block';
+        }, 3000);
+        
+        setTimeout(() => {
+          window.location.replace("{{ url_for('list_files') }}");
+        }, 5000) // 3000 millisecondes = 3 secondes
+      </script>
+ </html>
