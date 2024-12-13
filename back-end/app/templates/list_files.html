@@ -114,11 +114,11 @@ button:disabled, input[type="submit"]:disabled {
     <h1> Fichiers disponibles : </h1>
 
     <ul>
-        {% if files %}
-            <li><a href="{{ url_for('download_file', filename=file) }}">{{ files[0] }}</a></li>
+        {% for file in files %}
+            <li><a href="{{ url_for('download_file', filename=file) }}">{{ file }}</a></li>
         {% else %}
             <li>Pas de fichiers PDF disponibles.</li>
-        {% endif %}
+        {% endfor %}
     </ul>
 
 <form action="/logout" method="post"> 
