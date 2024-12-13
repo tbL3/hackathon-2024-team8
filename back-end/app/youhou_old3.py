@@ -144,7 +144,7 @@ def anon(file):
                         })
 
         # 5. Names
-        name_pattern = r'\b[A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+ [A-ZÀ-ÖØ-Ý][a-zà-öø-ÿ]+\b'
+        name_pattern = r'\b[A-Z][a-z]+ [A-Z][a-z]+\b'
         names = re.findall(name_pattern, text)
         for name in names:
             if name not in unique_names:
@@ -231,7 +231,7 @@ def anon(file):
                     font = fitz.Font()
                     
                     # Calculate the width of the replacement text
-                    text_width = font.text_length(annotation['replacement'], fontsize=min(text_rect.height * 1, 12))
+                    text_width = font.text_length(annotation['replacement'], fontsize=min(text_rect.height * 1, 14))
                     
                     # Adjust the x position to center the text
                     text_x = center_x - (text_width / 2)
@@ -244,7 +244,7 @@ def anon(file):
                         (center_x, center_y),  # Adjusted position to center the text
                         annotation['replacement'], 
                         color=(0, 0, 0),  # Black text
-                        fontsize=min(text_rect.height * 1, 11)  # Adjust font size to fit, with a maximum size
+                        fontsize=min(text_rect.height * 1, 14)  # Adjust font size to fit, with a maximum size
                     )
                 except Exception as e:
                     print(f"Error inserting text for {annotation['original']}: {e}")
