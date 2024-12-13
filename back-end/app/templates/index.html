@@ -94,6 +94,15 @@
     <body>
       <body>
         <div class="tout"> 
+          <div class="div_form"> 
+            <h1> Se connecter </h1>
+            <form action="/login" method="post">
+              <input type="text" value="username" name="username">
+              <input type="password" value="Password" name="password">
+              <button type="submit"> {{context.ok}} </button>
+            </form>
+          </div>
+          <br>
         <div class="div_form"> 
           <h1>{{context.name}}</h1>
           <p> Permet de dissimuler vos données sensibles </p>
@@ -116,15 +125,6 @@
 
       </div>
     </br> 
-
-      <div class="div_form"> 
-        <h1> Se connecter </h1>
-        <form action="/login" method="post">
-          <input type="text" value="username" name="username">
-          <input type="password" value="Password" name="password">
-          <button type="submit"> {{context.ok}} </button>
-        </form>
-      </div>
     </div>
 
       <script>
