@@ -70,16 +70,24 @@
       }
 
       .div_form input[type="text"],
-      .div_form input[type="password"] {
-        width: 100%;
-        padding: 12px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        outline: none;
-        transition: border-color 0.3s;
-      }
+.div_form input[type="password"] {
+    width: 80%; /* Réduit la largeur */
+    max-width: 300px; /* Limite la largeur maximale */
+    margin: 10px auto; /* Ajoute de l'espace et centre horizontalement */
+    display: block; /* Permet d'utiliser "margin: auto" */
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
 
+.div_form input[type="text"]:focus,
+.div_form input[type="password"]:focus {
+    border-color: lightseagreen; /* Change la couleur de la bordure au focus */
+    box-shadow: 0 0 5px rgba(32, 178, 170, 0.5); /* Ajoute un léger effet lumineux */
+}
     </style>
   </head>
 
