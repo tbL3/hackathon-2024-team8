@@ -6,6 +6,7 @@
     <title>Available Files</title>
     <style> 
 
+
         /* Style général du body */
         body {
             height: 100vh;
@@ -73,6 +74,40 @@
             font-size: 1.2rem;
             color: #b2bec3;
         }
+
+
+
+        button, input[type="submit"] {
+    font-family: 'Arial', sans-serif;
+    font-size: 1rem;
+    color: white;
+    background-color: #16a085;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #138c6d;
+    transform: scale(1.05);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+button:active, input[type="submit"]:active {
+    background-color: #0f7057;
+    transform: scale(0.98);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+button:disabled, input[type="submit"]:disabled {
+    background-color: #b2bec3;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
     </style>
 </head>
 <body>
@@ -85,5 +120,10 @@
             <li>Pas de fichiers PDF disponibles.</li>
         {% endif %}
     </ul>
+
+<form action="/logout" method="post"> 
+    <input type="submit" value="Se déconnecter" style="background-color: red;"> 
+</form>
+
 </body>
 </html>

@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, send_from_directory, send_file
+from flask import Flask, request, redirect, render_template, send_from_directory, send_file, session, url_for
 import os
 from youhou import anon
 
@@ -11,6 +11,19 @@ UPLOAD_FOLDER = 'uploads'  # You can change this path as needed
 
 # Ensure the upload folder exists
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+
+app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
+
+# Route de login
+@app.route('/login', methods=['POST'])
+def login():
+    session['username'] = request.form['username']
+    return redirect(url_for('list_files'))
+
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    session.pop('username')
+    return redirect(url_for('index'))
 
 @app.route('/')
 def index():
@@ -46,11 +59,14 @@ def upload_file():
     
 @app.route('/files')
 def list_files():
-    # Get a list of all files in the 'files' folder
-    files = os.listdir("files")
-    # Filter to only show PDF files
-    pdf_files = [file for file in files if file.endswith('.pdf')]
-    return render_template('list_files.html', files=pdf_files)
+    if 'username' in session:
+        # Get a list of all files in the 'files' folder
+        files = os.listdir("files")
+        # Filter to only show PDF files
+        pdf_files = [file for file in files if file.endswith('.pdf')]
+        return render_template('list_files.html', files=pdf_files)
+    else:
+        return redirect(url_for('index'))
 
 @app.route('/download/<filename>')
 def download_file(filename):

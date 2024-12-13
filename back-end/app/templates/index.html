@@ -69,12 +69,23 @@
         background-color: #dfe6e9;
       }
 
+      .div_form input[type="text"],
+      .div_form input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        outline: none;
+        transition: border-color 0.3s;
+      }
 
     </style>
   </head>
 
     <body>
       <body>
+        <div class="tout"> 
         <div class="div_form"> 
           <h1>{{context.name}}</h1>
           <p> Permet de dissimuler vos données sensibles </p>
@@ -96,6 +107,18 @@
         </form>
 
       </div>
+    </br> 
+
+      <div class="div_form"> 
+        <h1> Se connecter </h1>
+        <form action="/login" method="post">
+          <input type="text" value="username" name="username">
+          <input type="password" value="Password" name="password">
+          <button type="submit"> {{context.ok}} </button>
+        </form>
+      </div>
+    </div>
+
       <script>
         function displayFileName() {
           var fileInput = document.getElementById('file');
